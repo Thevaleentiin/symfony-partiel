@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier:{{matiere.name}}{% endblock %}
+
+{% block body %}
+    <h1>{{matiere.name}} </h1>
+    <p>Coefficient: <b>{{matiere.coef}}</b></p>
+    <a href="{{ path('matiereDelete', {'id': matiere.id}) }}">X Supprimer</a>
+    <h2>Modifier une matiere:</h2>
+    {{ form_start(edit_form) }}
+        {{ form_label(edit_form.name) }}
+        {{ form_widget(edit_form.name) }}
+        {{ form_errors(edit_form.name) }}
+        {{ form_label(edit_form.coef) }}
+        {{ form_widget(edit_form.coef) }}
+        {{ form_errors(edit_form.coef) }}
+        {{ form_row(edit_form.save) }}
+    {{ form_end(edit_form) }}
+
+{% endblock %}

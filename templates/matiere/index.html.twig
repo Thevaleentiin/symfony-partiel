@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatiereController!{% endblock %}
+
+{% block body %}
+    <h1>Page Matières</h1>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Matière</th>
+                    <th>Coefficient</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for matiere in matieres %}
+                <tr>
+                    <td>
+                        <a href="{{ path('matiere', {'id': matiere.id}) }}">
+                            {{ matiere.name }}
+                        </a>
+                    </td>
+                    <td>{{ matiere.coef }}</td>
+                </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <h2>Ajouter une matiere:</h2>
+    {{ form_start(add_matiere) }}
+        {{ form_label(add_matiere.name) }}
+        {{ form_widget(add_matiere.name) }}
+        {{ form_errors(add_matiere.name) }}
+        {{ form_label(add_matiere.coef) }}
+        {{ form_widget(add_matiere.coef) }}
+        {{ form_errors(add_matiere.coef) }}
+        {{ form_row(add_matiere.save) }}
+    {{ form_end(add_matiere) }}
+
+{% endblock %}

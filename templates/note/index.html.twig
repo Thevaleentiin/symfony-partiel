@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partiel Symfony!{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue !</h1>
+
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Note</th>
+                    <th>Matière</th>
+                    <th>Coefficient</th>
+                    <th>Date de création</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for note in notes %}
+                <tr>
+                    <td>
+                        {# <a href="{{ path('note', {'id': note.id}) }}"> #}
+                            {{ note.note }}
+                        {# </a> #}
+                    </td>
+                    <td>{{ note.matiere }}</td>
+                    <td>{{ matiere.coef}}</td>
+                    <td>{{ note.noteDate|date('d/m/Y H:i:s') }}</td>
+                </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <h2>Ajouter une note:</h2>
+    {{ form_start(add_note) }}
+        {{ form_label(add_note.note) }}
+        {{ form_widget(add_note.note) }}
+        {{ form_errors(add_note.note) }}
+        {{ form_row(add_note.matiere) }}
+        {# {{ form_row(add_note.coefficient) }} #}
+        {{ form_row(add_note.save) }}
+    {{ form_end(add_note) }}
+{% endblock %}
